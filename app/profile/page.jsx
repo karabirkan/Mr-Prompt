@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import Profile from "@components/Profile";
 
 const MyProfile = () => {
-  const { data: session } = useSession;
+  const { data: session } = useSession();
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -27,7 +27,7 @@ const MyProfile = () => {
     <Profile
       name="My"
       desc="Welcome to your profile page"
-      data={[]}
+      data={posts}
       handleEdit={handleEdit}
       handleDelete={handleDelete}
     />
