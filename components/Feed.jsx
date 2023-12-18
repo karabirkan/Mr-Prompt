@@ -7,10 +7,10 @@ const Feed = () => {
   const [searchText, setSearchText] = useState("");
   const handleSearchChange = () => {};
   const [posts, setPosts] = useState([]);
-
+  const handleTagClick = () => {};
   useEffect(() => {
     const fetchPosts = async () => {
-      const response = await fetch(`api/prompt`);
+      const response = await fetch("/api/prompt");
       const data = await response.json();
 
       setPosts(data);
@@ -32,23 +32,17 @@ const Feed = () => {
           className="search_input peer"
         />
       </form>
-      <PromptCardList data={posts} handleTagClick={() => {}} />
+      <div className="mt-16 prompt_layout">
+        {posts.map((post) => (
+          <PromptCard
+            key={post._id}
+            post={post}
+            handleTagClick={handleTagClick}
+          />
+        ))}
+      </div>
     </section>
   );
 };
 
 export default Feed;
-
-const PromptCardList = ({ data, handleTagClick }) => {
-  return (
-    <div className="mt-16 prompt_layout">
-      {data.map((post) => (
-        <PromptCard
-          key={post._id}
-          post={post}
-          handleTagClick={handleTagClick}
-        />
-      ))}
-    </div>
-  );
-};
