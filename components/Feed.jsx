@@ -9,19 +9,15 @@ const Feed = () => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("/api/prompt");
-        const data = await response.json();
+    const fetchPosts = async () => {
+      const response = await fetch(`api/prompt`);
+      const data = await response.json();
 
-        setPosts(data);
-        console.log(data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
+      setPosts(data);
+      console.log(data);
     };
 
-    fetchData(); // Invoke the async function
+    fetchPosts();
   }, []);
 
   return (
