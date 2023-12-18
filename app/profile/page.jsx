@@ -16,6 +16,7 @@ const MyProfile = () => {
       const data = await response.json();
 
       setPosts(data);
+      console.log(data);
     };
 
     if (session?.user.id) fetchPosts();
@@ -39,10 +40,12 @@ const MyProfile = () => {
 
         setPosts(filteredPosts);
       } catch (error) {
-        console.log(error);
+        console.error("Error deleting prompt:", error);
+        console.log("Response:", error.response); // Log the response for more details
       }
     }
   };
+
   return (
     <Profile
       name="My"
