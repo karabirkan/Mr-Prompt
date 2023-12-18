@@ -8,6 +8,7 @@ import Profile from "@components/Profile";
 const MyProfile = () => {
   const { data: session } = useSession();
   const [posts, setPosts] = useState([]);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -15,14 +16,36 @@ const MyProfile = () => {
       const data = await response.json();
 
       setPosts(data);
+      console.log(data);
     };
 
     if (session?.user.id) fetchPosts();
   }, [session?.user.id]);
 
-  const handleEdit = () => {};
+  const handleEdit = (post) => {
+    router.push(`/update-prompt?id=${post._id}`);
+  };
+  const handleDelete = async (post) => {
+    const hasConfirmed = confirm(
+      "Are you sure you want to delete this prompt?"
+    );
 
-  const handleDelete = async () => {};
+    if (hasConfirmed) {
+      try {
+        await fetch(`/api/prompt/${post._id.toString()}`, {
+          method: "DELETE",
+        });
+
+        const filteredPosts = posts.filter((item) => item._id !== post._id);
+
+        setPosts(filteredPosts);
+      } catch (error) {
+        console.error("Error deleting prompt:", error);
+        console.log("Response:", error.response); // Log the response for more details
+      }
+    }
+  };
+
   return (
     <Profile
       name="My"
