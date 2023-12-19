@@ -36,8 +36,7 @@ const Feed = () => {
       console.log(data);
     };
 
-    fetchPosts();
-  }, []);
+
 
   return (
     <section className="feed">
@@ -66,6 +65,7 @@ const Feed = () => {
                 handleTagClick={handleTagClick}
               />
             ))}
+
       </div>
     </section>
   );
