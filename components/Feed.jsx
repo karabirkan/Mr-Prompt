@@ -4,10 +4,29 @@ import { useEffect, useState } from "react";
 import PromptCard from "./PromptCard";
 
 const Feed = () => {
-  const [searchText, setSearchText] = useState("");
-  const handleSearchChange = () => {};
+  const [searchText, setSearchText] = useState();
   const [posts, setPosts] = useState([]);
+  const [filteredPosts, setFilteredPosts] = useState([]);
+
+  const handleSearchChange = (e) => {
+    e.preventDefault();
+    setSearchText(e.target.value);
+  };
+
+  useEffect(() => {
+    const searchedText = posts.filter(
+      (item) =>
+        item.tag.includes(searchText) ||
+        item.creator.email.includes(searchText) ||
+        item.creator.username.includes(searchText) ||
+        item.prompt.includes(searchText)
+    );
+    setFilteredPosts([...searchedText]);
+    console.log(searchText);
+  }, [searchText]);
+
   const handleTagClick = () => {};
+
   useEffect(() => {
     const fetchPosts = async () => {
       const response = await fetch("/api/prompt");
@@ -17,8 +36,7 @@ const Feed = () => {
       console.log(data);
     };
 
-    fetchPosts();
-  }, []);
+
 
   return (
     <section className="feed">
@@ -26,20 +44,28 @@ const Feed = () => {
         <input
           type="text"
           placeholder="Search for a tag or a username"
-          value={searchText}
           onChange={handleSearchChange}
           required
           className="search_input peer"
         />
       </form>
       <div className="mt-16 prompt_layout">
-        {posts.map((post) => (
-          <PromptCard
-            key={post._id}
-            post={post}
-            handleTagClick={handleTagClick}
-          />
-        ))}
+        {filteredPosts.length > 0
+          ? filteredPosts.map((post) => (
+              <PromptCard
+                key={post._id}
+                post={post}
+                handleTagClick={handleTagClick}
+              />
+            ))
+          : posts.map((post) => (
+              <PromptCard
+                key={post._id}
+                post={post}
+                handleTagClick={handleTagClick}
+              />
+            ))}
+
       </div>
     </section>
   );
