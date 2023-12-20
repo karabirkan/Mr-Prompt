@@ -1,11 +1,11 @@
 "use client";
 
-import Form from "@components/Form";
+import PostForm from "@components/PostForm";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
-const CreatePrompt = () => {
+const CreatePost = () => {
   const router = useRouter();
   const { data: session } = useSession();
 
@@ -40,9 +40,8 @@ const CreatePrompt = () => {
       setSubmit(false);
     }
   };
-
   return (
-    <Form
+    <PostForm
       type="Create"
       post={post}
       setPost={setPost}
@@ -52,4 +51,4 @@ const CreatePrompt = () => {
   );
 };
 
-export default CreatePrompt;
+export default CreatePost;
