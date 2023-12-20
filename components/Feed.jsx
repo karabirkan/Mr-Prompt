@@ -2,16 +2,65 @@
 
 import { useEffect, useState } from "react";
 import PromptCard from "./PromptCard";
+import PostForm from "./PostForm";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const Feed = () => {
-  const [searchText, setSearchText] = useState();
+  const router = useRouter();
+  const { data: session } = useSession();
+
+  const [searchText, setSearchText] = useState("");
+
   const [posts, setPosts] = useState([]);
+
   const [filteredPosts, setFilteredPosts] = useState([]);
 
-  const handleSearchChange = (e) => {
+  const [submit, setSubmit] = useState(false);
+  const [post, setPost] = useState({
+    prompt: "",
+    tag: "",
+  });
+
+  const createPost = async (e) => {
     e.preventDefault();
+    setSubmit(true);
+
+    try {
+      const response = await fetch("/api/prompt/new", {
+        method: "POST",
+        body: JSON.stringify({
+          prompt: post.prompt,
+          userId: session?.user.id,
+          tag: post.tag,
+        }),
+      });
+
+      if (response.ok) {
+        fetchPosts();
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setSubmit(false);
+    }
+  };
+
+  const handleSearchChange = (e) => {
     setSearchText(e.target.value);
   };
+
+  const handleTagClick = () => {};
+
+  const fetchPosts = async () => {
+    const response = await fetch("/api/prompt");
+    const data = await response.json();
+    setPosts(data);
+  };
+
+  useEffect(() => {
+    fetchPosts();
+  }, []);
 
   useEffect(() => {
     const searchedText = posts.filter(
@@ -21,27 +70,20 @@ const Feed = () => {
         item.creator.username.includes(searchText) ||
         item.prompt.includes(searchText)
     );
-    setFilteredPosts([...searchedText]);
-    console.log(searchText);
-  }, [searchText]);
-
-  const handleTagClick = () => {};
-
-  useEffect(() => {
-    const fetchPosts = async () => {
-      const response = await fetch("/api/prompt");
-      const data = await response.json();
-
-      setPosts(data);
-      console.log(data);
-    };
-
-    fetchPosts();
-  }, []);
+    setFilteredPosts(searchedText);
+  }, [searchText, posts]);
 
   return (
     <section className="feed">
-      <form className="relative w-full flex-center">
+      <PostForm
+        type="submit your madness"
+        post={post}
+        setPost={setPost}
+        submit={submit}
+        handleSubmit={createPost}
+      />
+
+      {/* <form className=" mt-16 relative w-full flex-center">
         <input
           type="text"
           placeholder="Search for a tag or a username"
@@ -49,7 +91,8 @@ const Feed = () => {
           required
           className="search_input peer"
         />
-      </form>
+      </form> */}
+
       <div className="mt-16 prompt_layout">
         {filteredPosts.length > 0
           ? filteredPosts.map((post) => (
