@@ -13,6 +13,7 @@ const CreatePost = () => {
   const [post, setPost] = useState({
     prompt: "",
     tag: "",
+    date: "",
   });
 
   const createPost = async (e) => {
@@ -26,6 +27,7 @@ const CreatePost = () => {
           prompt: post.prompt,
           userId: session?.user.id,
           tag: post.tag,
+          date: post.date,
         }),
       });
 
@@ -38,7 +40,6 @@ const CreatePost = () => {
       setSubmit(false);
     }
   };
-
   return (
     <PostForm
       type="Create"

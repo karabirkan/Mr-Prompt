@@ -20,6 +20,7 @@ const Feed = () => {
   const [post, setPost] = useState({
     prompt: "",
     tag: "",
+    date: "",
   });
 
   const createPost = async (e) => {
@@ -33,11 +34,17 @@ const Feed = () => {
           prompt: post.prompt,
           userId: session?.user.id,
           tag: post.tag,
+          date: Date(),
         }),
       });
 
       if (response.ok) {
         fetchPosts();
+        setPost({
+          prompt: "",
+          tag: "",
+          date: "",
+        });
       }
     } catch (error) {
       console.log(error);

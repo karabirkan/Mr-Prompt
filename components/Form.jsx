@@ -43,6 +43,7 @@ const Form = ({ type, post, setPost, submit, handleSubmit }) => {
           <button
             type="submit"
             disabled={submit}
+            onClick={() => setPost({ ...post, date: Date() })}
             className="px-5 py-1.5 text-sm bg-primary-orange rounded-full text-white"
           >
             {submit ? `${type}...` : type}

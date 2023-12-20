@@ -1,5 +1,6 @@
 "use client";
 
+import { format, formatDistanceToNow } from "date-fns";
 import { useState } from "react";
 import Image from "next/image";
 import { useSession, session } from "next-auth/react";
@@ -15,6 +16,25 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
   const { data: session } = useSession();
   const pathName = usePathname();
   const router = useRouter();
+
+  const dateObject = new Date(post.date);
+  const currentTime = new Date();
+
+  let formattedDate;
+  let timeAgo;
+
+  if (!isNaN(dateObject)) {
+    const hoursDifference = Math.abs(currentTime - dateObject) / 36e5;
+
+    if (hoursDifference >= 24) {
+      formattedDate = format(dateObject, "MMM dd");
+    } else {
+      timeAgo = formatDistanceToNow(dateObject, { addSuffix: true });
+    }
+  } else {
+    formattedDate = "Invalid Date";
+  }
+
   return (
     <div className="prompt_card">
       <div className="flex justify-between items-start gap-5">
@@ -32,6 +52,9 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
             </h3>
             <p className="font-inter text-sm text-gray-500">
               {post.creator.email}
+            </p>
+            <p className="font-inter text-sm text-gray-500">
+              {formattedDate} {timeAgo}
             </p>
           </div>
         </div>

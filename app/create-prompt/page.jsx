@@ -13,9 +13,10 @@ const CreatePrompt = () => {
   const [post, setPost] = useState({
     prompt: "",
     tag: "",
+    date: "",
   });
 
-  const createPrompt = async (e) => {
+  const createPost = async (e) => {
     e.preventDefault();
     setSubmit(true);
 
@@ -26,8 +27,10 @@ const CreatePrompt = () => {
           prompt: post.prompt,
           userId: session?.user.id,
           tag: post.tag,
+          date: post.date,
         }),
       });
+
       if (response.ok) {
         router.push("/");
       }
@@ -44,7 +47,7 @@ const CreatePrompt = () => {
       post={post}
       setPost={setPost}
       submit={submit}
-      handleSubmit={createPrompt}
+      handleSubmit={createPost}
     />
   );
 };

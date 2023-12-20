@@ -16,7 +16,7 @@ const Nav = () => {
   }, []);
 
   return (
-    <nav className="flex-between w-full mb-16 pt-3">
+    <nav className="flex-between w-full mb-4 pt-3">
       <Link href="/" className="flex gap-2 flex-center">
         <Image
           src="/assets/images/logo.png"
@@ -25,7 +25,7 @@ const Nav = () => {
           height={100}
           className="object-contain"
         />
-        <p className="logo_text">MAAAAAD!</p>
+        <p className="logo_text">I AM MAD!</p>
       </Link>
 
       {/* Desktop Navigation */}
