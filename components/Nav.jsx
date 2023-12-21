@@ -21,8 +21,8 @@ const Nav = () => {
         <Image
           src="/assets/images/logo.png"
           alt="logo"
-          width={100}
-          height={100}
+          width={40}
+          height={40}
           className="object-contain"
         />
         <p className="logo_text">I AM MAD!</p>
