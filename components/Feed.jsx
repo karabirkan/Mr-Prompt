@@ -5,6 +5,7 @@ import PromptCard from "./PromptCard";
 import PostForm from "./PostForm";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const Feed = () => {
   const router = useRouter();
@@ -82,13 +83,41 @@ const Feed = () => {
 
   return (
     <section className="feed">
-      <PostForm
-        type="submit your madness"
-        post={post}
-        setPost={setPost}
-        submit={submit}
-        handleSubmit={createPost}
-      />
+      {session ? (
+        <>
+          <h1 className="head_text text-center">
+            <br className="max-md:hidden" />
+            <span className="orange_gradient">unleash your rage</span>
+          </h1>
+          <p className="desc text-center">
+            spill the tea, vent the rage. it is your space to express without
+            judgment.
+          </p>
+          <PostForm
+            type="submit your madness"
+            post={post}
+            setPost={setPost}
+            submit={submit}
+            handleSubmit={createPost}
+          />
+        </>
+      ) : (
+        <>
+          <Image
+            src="/assets/images/logo.png"
+            width={300}
+            height={300}
+            alt="pp"
+          />
+          <h1 className="head_text_login text-center">
+            Please log in to unlock the vault and unleash your inner storm.{" "}
+            <br className="max-md:hidden" />
+            <span className="orange_gradient text-center">
+              Share what made you mad today!
+            </span>
+          </h1>
+        </>
+      )}
 
       {/* <form className=" mt-16 relative w-full flex-center">
         <input
@@ -100,7 +129,7 @@ const Feed = () => {
         />
       </form> */}
 
-      <div className="mt-16 prompt_layout">
+      <div className="prompt_layout mt-16 mb-16">
         {filteredPosts.length > 0
           ? filteredPosts.map((post) => (
               <PromptCard

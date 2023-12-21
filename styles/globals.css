@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rowdies:wght@700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -88,6 +89,9 @@
 .head_text {
   @apply mt-5 text-2xl font-extrabold leading-[1.15] text-black sm:text-4xl;
 }
+.head_text_login {
+  @apply mt-2 text-lg font-extrabold leading-[1.15] text-black sm:text-lg flex flex-col;
+}
 
 .orange_gradient {
   @apply bg-gradient-to-r from-amber-500 via-orange-600 to-yellow-500 bg-clip-text text-transparent;
@@ -118,12 +122,12 @@
 }
 
 .prompt_layout {
-  @apply space-y-6 py-8 sm:columns-2 sm:gap-6 xl:columns-3;
+  @apply space-y-6 py-2 sm:columns-2 sm:gap-6 xl:columns-3 2xl:columns-3;
 }
 
 /* Feed Component */
 .feed {
-  @apply mt-16 mx-auto w-full max-w-xl flex justify-center items-center flex-col gap-2;
+  @apply mt-10 mx-auto w-full max-w-xl flex justify-center items-center flex-col gap-2;
 }
 
 /* Form Component */
@@ -137,7 +141,7 @@
 
 /* Nav Component */
 .logo_text {
-  @apply max-sm:hidden font-satoshi font-semibold text-lg text-black tracking-wide;
+  @apply max-sm:hidden font-rowdies font-semibold text-lg text-black tracking-wide;
 }
 
 .dropdown {
@@ -150,7 +154,7 @@
 
 /* PromptCard Component */
 .prompt_card {
-  @apply flex-1 break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-[360px] w-full h-fit;
+  @apply flex-1 break-inside-avoid rounded-xl border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter  md:w-[360px] w-full h-fit;
 }
 
 .flex-center {

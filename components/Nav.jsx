@@ -21,11 +21,19 @@ const Nav = () => {
         <Image
           src="/assets/images/logo.png"
           alt="logo"
-          width={100}
-          height={100}
+          width={40}
+          height={40}
           className="object-contain"
         />
-        <p className="logo_text">I AM MAD!</p>
+        {session ? (
+          <p className="logo_text">
+            {session?.user.name
+              ? session.user.name.split(" ")[0].trim().toUpperCase()
+              : ""}
+          </p>
+        ) : (
+          <p className="logo_text">I AM MAD!</p>
+        )}
       </Link>
 
       {/* Desktop Navigation */}
