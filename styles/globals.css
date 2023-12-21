@@ -88,6 +88,9 @@
 .head_text {
   @apply mt-5 text-2xl font-extrabold leading-[1.15] text-black sm:text-4xl;
 }
+.head_text_login {
+  @apply mt-2 text-lg font-extrabold leading-[1.15] text-black sm:text-lg flex flex-col;
+}
 
 .orange_gradient {
   @apply bg-gradient-to-r from-amber-500 via-orange-600 to-yellow-500 bg-clip-text text-transparent;
@@ -118,7 +121,7 @@
 }
 
 .prompt_layout {
-  @apply space-y-6 py-8 sm:columns-2 sm:gap-6 xl:columns-3;
+  @apply space-y-6 py-2 sm:columns-2 sm:gap-6 xl:columns-3;
 }
 
 /* Feed Component */
