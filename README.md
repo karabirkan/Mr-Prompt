@@ -1,39 +1,52 @@
-=# Mr-Prompt
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Project Title
+
+## Overview
+
+The "I Was Mad At" project provides a platform for users to share and express the reasons behind their frustration or anger. Users can post, edit, and delete their entries, fostering a community where individuals can freely express their emotions.
+
+## Technologies Used
+
+- MongoDB
+- Next.js
+- NextAuth.js
+- Google OAuth 2.0
+- Tailwind
+
+## Features
+
+### 1. Post Creation
+
+Users can create new posts to share the reasons for their frustration.
+
+### 2. Post Editing
+
+Users have the ability to edit their posted content, allowing them to update or refine their expressions.
+
+### 3. Post Deletion
+
+For any reason, users can delete their posts to remove them from the platform.
+
+### 4. User Profiles
+
+Users have personalized profiles where they can view their posts and potentially see others' posts.
 
 ## Getting Started
 
-First, run the development server:
+Follow these steps to set up the project locally:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. Clone the repository: `git clone <repository-url>`
+2. Install dependencies: `npm install`
+3. Configure environment variables (e.g., MongoDB connection, OAuth credentials).
+4. Run the development server: `npm run dev`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Usage
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- Navigate to the application and explore the features available.
+- Create, edit, or delete posts based on your needs.
+- Visit your profile page to see your posts and potentially others' posts.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+## License
 
-To learn more about Next.js, take a look at the following resources:
+This project is licensed under the [LICENSE_NAME] - see the [LICENSE.md](LICENSE.md) file for details.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-
-> > > > > > > 8e10183 (inital commit with project file)
