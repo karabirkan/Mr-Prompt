@@ -129,7 +129,7 @@ const Feed = () => {
         />
       </form> */}
 
-      <div className="mt-16 prompt_layout">
+      <div className="prompt_layout mt-16 mb-16">
         {filteredPosts.length > 0
           ? filteredPosts.map((post) => (
               <PromptCard

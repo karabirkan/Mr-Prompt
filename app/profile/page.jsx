@@ -49,7 +49,7 @@ const MyProfile = () => {
   return (
     <Profile
       name="My"
-      desc="Welcome to your profile page"
+      desc="Welcome to your profile page "
       data={posts}
       handleEdit={handleEdit}
       handleDelete={handleDelete}
