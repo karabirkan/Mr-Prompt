@@ -1,3 +1,5 @@
+<a href="https://ibb.co/Tm4rg0h"><img src="https://i.ibb.co/3BpkCFh/Untitled-Artwork.png" width="200" height="200" alt="Untitled-Artwork" border="0"></a>
+
 # Project Title
 I was mad at
 
@@ -55,3 +57,6 @@ Follow these steps to set up the project locally:
 
 This project is licensed under the [LICENSE_NAME] - see the [LICENSE.md](LICENSE.md) file for details.
 
+#Logo recreated by Birkan Kara.
+
+<a href="https://ibb.co/LzmfrzW"><img src="https://i.ibb.co/N65zr6P/IMG-4437.jpg" alt="IMG-4437" border="0"></a>
