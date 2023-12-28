@@ -6,7 +6,7 @@ https://iwasmadat.vercel.app/</div>
 
 <div align="center">
   <br />
-    <a href="https://eventifyhub.vercel.app" target="_blank">
+    <a href="https://iwasmadat.vercel.app/" target="_blank">
       <img src="https://i.imgur.com/rBqR3pQ.jpg" alt="Project Banner">
     </a>
   <br />
